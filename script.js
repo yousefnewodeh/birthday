@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCakes() {
         const container = document.getElementById('cakes-container');
         const cakeCount = 25; // Slightly more to balance both themes
-        const cakeSymbols = ['🥜', '⭐', '🌹', '🎩', '🔫', '🤝', '🦋', '🕵️', '🎂', '🍰', '🧁', '🍭'];
+        const cakeSymbols = ['🌸', '✨', '🎀', '🧸', '💖', '🦋', '🍭', '🧁', '👑', '🦢'];
 
         for (let i = 0; i < cakeCount; i++) {
             const cake = document.createElement('div');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sparkle Trail
     function createSparkle(x, y) {
         const sparkle = document.createElement('div');
-        sparkle.innerHTML = '⭐'; // Using Star for Spy x Family
+        sparkle.innerHTML = '⭐'; // Standard star sparkle
         sparkle.style.color = 'var(--gold)';
         sparkle.style.position = 'fixed';
         sparkle.style.left = x + 'px';
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Confetti System
     const particles = [];
-    const colors = ['#7a9680', '#fab3ad', '#610a10', '#ffd700', '#2c2827'];
+    const colors = ['#ff8fa3', '#ffccd5', '#fff0f3', '#ffd700', '#ff4d6d'];
 
     class Particle {
         constructor() {
