@@ -104,7 +104,7 @@ body {
 
 /* Container */
 .container {
-    perspective: 1500px;
+    perspective: 2000px;
     z-index: 10;
 }
 
@@ -132,11 +132,12 @@ body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left;
 }
 
 .card.open {
-    transform: rotateY(-130deg);
+    transform: translateX(50%) rotateY(-160deg);
 }
 
 .card-front,
@@ -146,26 +147,30 @@ body {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 20px;
-    padding: 30px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(255, 133, 162, 0.2);
-    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 45px rgba(255, 133, 162, 0.3);
+    backdrop-filter: blur(20px);
     background: var(--glass);
 }
 
 .card-front {
     z-index: 2;
+    /* Physical thickness effect */
+    border-right: 4px solid rgba(255, 255, 255, 0.4);
 }
 
 .card-inside {
     transform: rotateY(180deg);
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     justify-content: space-around;
+    /* Shadow at the hinge */
+    box-shadow: inset 15px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Front Styling */
