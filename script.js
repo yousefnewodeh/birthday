@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCakes() {
         const container = document.getElementById('cakes-container');
         const cakeCount = 30;
-        const cakeSymbols = ['🎂', '🍰', '🧁', '🍩', '✨', '🍭'];
+        const cakeSymbols = ['🌸', '🎀', '💖', '✨', '🧁', '🍭', '🎂', '🍰', '🦋'];
 
         for (let i = 0; i < cakeCount; i++) {
             const cake = document.createElement('div');
@@ -51,36 +51,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3D Tilt Effect
     const wrapper = document.querySelector('.card-wrapper');
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    wrapper.addEventListener('mousemove', (e) => {
-        if (card.classList.contains('open')) {
-            wrapper.style.transform = 'none';
-            return;
-        }
+    if (!isTouchDevice) {
+        wrapper.addEventListener('mousemove', (e) => {
+            if (card.classList.contains('open')) {
+                wrapper.style.transform = 'none';
+                return;
+            }
 
-        const rect = wrapper.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+            const rect = wrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg
-        const rotateY = ((x - centerX) / centerX) * 15; // Max 15 deg
+            const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg
+            const rotateY = ((x - centerX) / centerX) * 15; // Max 15 deg
 
-        wrapper.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
+            wrapper.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
 
-    wrapper.addEventListener('mouseleave', () => {
-        wrapper.style.transform = 'perspective(2000px) rotateX(0) rotateY(0)';
-    });
+        wrapper.addEventListener('mouseleave', () => {
+            wrapper.style.transform = 'perspective(2000px) rotateX(0) rotateY(0)';
+        });
+    }
 
     // Toggle Card
     card.addEventListener('click', (e) => {
         // Don't flip if clicking the button
         if (e.target !== confettiBtn) {
             card.classList.toggle('open');
-            card.parentElement.classList.toggle('expanded');
 
             // Reset tilt when opening
             if (card.classList.contains('open')) {
@@ -165,4 +167,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
