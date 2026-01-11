@@ -1,10 +1,10 @@
 :root {
-    --primary: #ff85a2;
-    --secondary: #ffb3c1;
-    --accent: #fbc2eb;
-    --bg-light: #fdfcfb;
-    --glass: rgba(255, 255, 255, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --primary: #ff6b95;
+    --secondary: #ffb7ce;
+    --accent: #e0aaff;
+    --bg-light: #fff5f8;
+    --glass: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.4);
 }
 
 * {
@@ -32,8 +32,24 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    background: linear-gradient(-45deg, #fce4ec, #f3e5f5, #fce4ec, #e8eaf6);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
     overflow: hidden;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .floating-item {
@@ -111,7 +127,9 @@ body {
 /* The Card Wrapper and Card */
 .card-wrapper {
     width: 400px;
+    max-width: 90vw;
     height: 500px;
+    max-height: 70vh;
     cursor: pointer;
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
         width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -119,11 +137,43 @@ body {
 
 .card-wrapper.expanded {
     width: 600px;
+    max-width: 95vw;
 }
 
-@media (max-width: 500px) {
-    .card-wrapper.expanded {
-        width: 90vw;
+@media (max-width: 650px) {
+    .card.open {
+        transform: translateX(45%) rotateY(-165deg) scale(0.9);
+    }
+
+    .card-front,
+    .card-inside {
+        padding: 25px;
+    }
+
+    .name {
+        font-size: 2.8rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .card-icon {
+        font-size: 60px;
+    }
+
+    .joke {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .card.open {
+        transform: translateX(48%) rotateY(-170deg) scale(0.8);
+    }
+
+    .name {
+        font-size: 2.2rem;
     }
 }
 
@@ -188,10 +238,22 @@ h1 {
 .name {
     display: block;
     font-family: 'Dancing Script', cursive;
-    color: var(--accent);
+    color: var(--primary);
     font-size: 3.5rem;
-    text-shadow: 0 0 15px rgba(255, 230, 109, 0.5);
+    text-shadow: 0 0 20px rgba(255, 107, 149, 0.3);
     margin-top: 10px;
+    animation: shimmer 3s infinite linear;
+    background: linear-gradient(to right, var(--primary) 20%, #fff 40%, var(--primary) 60%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
 }
 
 .tap-hint {
