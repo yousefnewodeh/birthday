@@ -15,7 +15,7 @@
 
 <body>
     <audio id="bgMusic" loop>
-        <source src="Happy Birthday Song Popular!!!.mp3" type="audio/mpeg">
+        <source src="HAPPY Birthday Song, Happy Birthday to You.mp3" type="audio/mpeg">
     </audio>
 
     <div class="music-control" id="musicToggle">
@@ -26,24 +26,70 @@
     </div>
 
     <main class="container">
-        <div class="card-wrapper">
-            <div class="card" id="birthdayCard">
-                <div class="card-front">
-                    <div class="card-icon">🎂</div>
-                    <h1>Happy Birthday, <span class="name">Tasneem</span>!</h1>
-                    <p class="tap-hint">Tap to open the magic ✨</p>
-                </div>
-                <div class="card-inside">
-                    <div class="wish-content">
-                        <h2>To a Special Person...</h2>
-                        <p>Wishing you a day filled with laughter, joy, and all the things that make you smile. May
-                            this year be your most magical one yet!</p>
-                        <p class="joke">"Happy 20th Birthday, Grandma! 👵 Welcome to the 'almost a quarter-century'
-                            club!"</p>
-                        <p class="joke">"Officially retired from being a teenager. Enjoy the back pain! 😂"</p>
-                        <div class="signature">Warmly, ✨</div>
-                        <button id="confettiBtn" class="magic-btn">Spread Magic! ✨</button>
+        <div class="book-wrapper">
+            <div class="book" id="birthdayBook">
+                <!-- Page 1: Cover -->
+                <div class="page cover active" id="page1">
+                    <div class="page-front">
+                        <div class="card-icon">🕵️‍♂️</div>
+                        <h1>Mission: <span class="name">Birthday</span></h1>
+                        <p>Code Name: <span style="color: var(--gold)">TASNEEM</span></p>
+                        <p class="tap-hint">Initiate Operation ✨</p>
                     </div>
+                    <div class="page-back"></div>
+                </div>
+
+                <!-- Page 2: Story Begins -->
+                <div class="page" id="page2">
+                    <div class="page-front">
+                        <div class="wish-content">
+                            <h2>TOP SECRET...</h2>
+                            <p>Wishing you a day filled with "Waku Waku" energy! May your mission today be filled with
+                                peanuts, smiles, and laughter.</p>
+                            <div class="decoration">🥜 ✨ 🥜</div>
+                        </div>
+                    </div>
+                    <div class="page-back"></div>
+                </div>
+
+                <!-- Page 3: To Someone Special -->
+                <div class="page" id="page3">
+                    <div class="page-front">
+                        <div class="wish-content">
+                            <h2>A Stellar Achievement</h2>
+                            <p>20 years of excellence! You've earned 8 Stella Stars for being the most amazing person in
+                                the world.</p>
+                            <div class="decoration">⭐ ⭐ ⭐</div>
+                        </div>
+                    </div>
+                    <div class="page-back"></div>
+                </div>
+
+                <!-- Page 4: Sweet 20 Moments -->
+                <div class="page" id="page4">
+                    <div class="page-front">
+                        <div class="wish-content">
+                            <h2>Family First...</h2>
+                            <p class="joke">"Anya likes peanuts. Anya hates studying. Anya loves Tasneem's birthday!
+                                Heh. 😏"</p>
+                            <p class="joke">"Mission Report: Another year older, another year of being a pro spy! 😂"
+                            </p>
+                        </div>
+                    </div>
+                    <div class="page-back"></div>
+                </div>
+
+                <!-- Page 5: Final Chapter -->
+                <div class="page" id="page5">
+                    <div class="page-front">
+                        <div class="wish-content">
+                            <h2>Mission Accomplished</h2>
+                            <p>May your future be as sharp as Loid and as elegant as Yor.</p>
+                            <div class="signature">With Love, 🌹</div>
+                            <button id="confettiBtn" class="magic-btn">Seal the Mission! ✨</button>
+                        </div>
+                    </div>
+                    <div class="page-back"></div>
                 </div>
             </div>
         </div>
