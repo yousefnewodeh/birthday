@@ -1,10 +1,16 @@
 :root {
-    --primary: #ff6b95;
-    --secondary: #ffb7ce;
-    --accent: #e0aaff;
-    --bg-light: #fff5f8;
-    --glass: rgba(255, 255, 255, 0.5);
-    --glass-border: rgba(255, 255, 255, 0.4);
+    --primary: #7a9680;
+    /* Loid/WISE Green */
+    --secondary: #fab3ad;
+    /* Anya Pink */
+    --accent: #610a10;
+    /* Yor Dark Red */
+    --gold: #ffd700;
+    /* Stella Star Gold */
+    --dark: #2c2827;
+    /* Deep Espionage Grey */
+    --glass: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(44, 40, 39, 0.2);
 }
 
 * {
@@ -14,8 +20,16 @@
     font-family: 'Outfit', sans-serif;
 }
 
+h1,
+h2,
+.signature {
+    font-family: 'Dancing Script', cursive;
+    /* Keeping this for elegance, but could use a serif */
+}
+
 body {
-    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    background: var(--dark);
+    background: radial-gradient(circle at center, #3d4a41 0%, #1a1d1b 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -32,23 +46,30 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(-45deg, #fce4ec, #f3e5f5, #fce4ec, #e8eaf6);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    background: radial-gradient(circle at 50% 50%, #2c3e34 0%, #0d0f0e 100%);
     overflow: hidden;
 }
 
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
+/* Twinkling Stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
     }
 
     50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
+        opacity: 1;
+        transform: scale(1.2);
     }
 }
 
@@ -58,25 +79,26 @@ body {
     top: 100%;
     animation: floating-items linear infinite;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 @keyframes floating-items {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) scale(0.5);
         opacity: 0;
     }
 
     10% {
-        opacity: 0.6;
+        opacity: 0.8;
     }
 
     90% {
-        opacity: 0.6;
+        opacity: 0.8;
     }
 
     100% {
-        transform: translateY(-100vh) rotate(360deg);
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
         opacity: 0;
     }
 }
@@ -124,78 +146,74 @@ body {
     z-index: 10;
 }
 
-/* The Card Wrapper and Card */
-.card-wrapper {
+/* The Book Wrapper and Book */
+.book-wrapper {
     width: 400px;
-    max-width: 90vw;
-    height: 500px;
-    max-height: 70vh;
+    height: 550px;
+    z-index: 10;
     cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    perspective: 2000px;
+    transition: transform 1s cubic-bezier(0.15, 0, 0.15, 1);
 }
 
-.card-wrapper.expanded {
-    width: 400px;
-    max-width: 90vw;
+.book-wrapper.opened {
+    transform: translateX(200px);
 }
 
-@media (max-width: 650px) {
-    .card.open {
-        transform: rotateY(-180deg) scale(0.9);
-    }
-
-    .card-front,
-    .card-inside {
-        padding: 25px;
-    }
-
-    .name {
-        font-size: 2.8rem;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    .card-icon {
-        font-size: 60px;
-    }
-
-    .joke {
-        font-size: 0.85rem !important;
-    }
-}
-
-@media (max-width: 400px) {
-    .card.open {
-        transform: rotateY(-180deg) scale(0.8);
-    }
-
-    .name {
-        font-size: 2.2rem;
-    }
-}
-
-.card {
+.book {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card.open {
-    transform: rotateY(-180deg);
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.15, 0, 0.15, 1);
+    z-index: 10;
 }
 
-.card-front,
-.card-inside {
+/* Page Glitter Effect */
+.page-front::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 45%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0.1) 55%,
+            transparent 100%);
+    transform: rotate(-45deg);
+    animation: glitter 6s infinite linear;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes glitter {
+    0% {
+        transform: translate(-30%, -30%) rotate(-45deg);
+    }
+
+    100% {
+        transform: translate(30%, 30%) rotate(-45deg);
+    }
+}
+
+.page-front,
+.page-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 20px;
+    border-radius: 0 15px 15px 0;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -203,21 +221,181 @@ body {
     align-items: center;
     text-align: center;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 15px 45px rgba(255, 133, 162, 0.3);
-    backdrop-filter: blur(20px);
-    background: var(--glass);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    overflow: hidden;
+    pointer-events: auto;
+    /* Ensure events work */
 }
 
-.card-front {
-    z-index: 2;
-    /* Physical thickness effect */
-    border-right: 4px solid rgba(255, 255, 255, 0.4);
-}
-
-.card-inside {
+.page-back {
     transform: rotateY(180deg);
-    background: rgba(255, 255, 255, 0.8);
-    justify-content: space-around;
+    border-radius: 15px 0 0 15px;
+    background: #fff;
+    z-index: 1;
+    /* Ensure back content is above front if needed */
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+
+/* Page Specifics and Z-Indexing */
+.page:nth-child(1) {
+    z-index: 50;
+}
+
+.page:nth-child(2) {
+    z-index: 40;
+}
+
+.page:nth-child(3) {
+    z-index: 30;
+}
+
+.page:nth-child(4) {
+    z-index: 20;
+}
+
+.page:nth-child(5) {
+    z-index: 10;
+}
+
+.page.flipped:nth-child(1) {
+    z-index: 10;
+}
+
+.page.flipped:nth-child(2) {
+    z-index: 20;
+}
+
+.page.flipped:nth-child(3) {
+    z-index: 30;
+}
+
+.page.flipped:nth-child(4) {
+    z-index: 40;
+}
+
+.page.flipped:nth-child(5) {
+    z-index: 50;
+}
+
+.cover {
+    z-index: 100 !important;
+}
+
+.cover.flipped {
+    z-index: 1 !important;
+}
+
+.cover .page-front {
+    background: linear-gradient(135deg, #fff 0%, #ffebf1 100%);
+    border-left: 5px solid var(--primary);
+}
+
+.page:not(.cover) .page-front {
+    background: #fff;
+    border-left: 1px solid #ddd;
+}
+
+/* Decoration inside pages */
+.decoration {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: var(--primary);
+    animation: float-decoration 3s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes float-decoration {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 5px var(--primary));
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.1);
+        filter: drop-shadow(0 0 15px var(--accent));
+    }
+}
+
+@media (max-width: 650px) {
+    .book-wrapper {
+        width: 320px;
+        height: 520px;
+        perspective: none;
+        overflow: hidden;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 10px;
+    }
+
+    .book-wrapper.opened {
+        transform: none;
+    }
+
+    .book {
+        transform-style: flat;
+    }
+
+    .page {
+        transform-origin: center;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
+        border-radius: 20px;
+        z-index: 1 !important;
+        /* Stack them for slides */
+    }
+
+    .page.active {
+        z-index: 2 !important;
+    }
+
+    /* Side-to-side slide effect */
+    .page.flipped {
+        transform: translateX(-120%) rotate(0) !important;
+        opacity: 0;
+        z-index: 0 !important;
+    }
+
+    .page-front,
+    .page-back {
+        backface-visibility: visible;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: #fff;
+    }
+
+    .page-back {
+        display: none;
+    }
+
+    /* Ensure subsequent pages are visible when previous flips */
+    .page:not(.flipped) {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .name {
+        font-size: 2.5rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .card-icon {
+        font-size: 50px;
+    }
+
+    .joke {
+        font-size: 0.85rem !important;
+    }
 }
 
 /* Front Styling */
@@ -265,12 +443,13 @@ h2 {
     font-family: 'Dancing Script', cursive;
     font-size: 2rem;
     color: var(--secondary);
+    margin-bottom: 20px;
 }
 
 .wish-content p {
     line-height: 1.6;
     font-size: 1.1rem;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .joke {
@@ -352,6 +531,35 @@ h2 {
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Light Burst Effect */
+.light-burst {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1000;
+    pointer-events: none;
+    animation: burst 1s ease-out forwards;
+}
+
+@keyframes burst {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        width: 200vw;
+        height: 200vh;
+        opacity: 0;
     }
 }
 
