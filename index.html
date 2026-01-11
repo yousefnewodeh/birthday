@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tasneem!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <audio id="bgMusic" loop>
+        <source src="Happy Birthday Song Popular!!!.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" id="musicToggle">
+        <span class="music-icon">🎵</span>
+    </div>
+    <div class="bg-animation" id="cakes-container">
+        <!-- Cakes will be injected here via JS -->
+    </div>
+
+    <main class="container">
+        <div class="card-wrapper">
+            <div class="card" id="birthdayCard">
+                <div class="card-front">
+                    <div class="card-icon">🎂</div>
+                    <h1>Happy Birthday, <span class="name">Tasneem</span>!</h1>
+                    <p class="tap-hint">Tap to open the magic ✨</p>
+                </div>
+                <div class="card-inside">
+                    <div class="wish-content">
+                        <h2>To a Special Person...</h2>
+                        <p>Wishing you a day filled with laughter, joy, and all the things that make you smile. May
+                            this year be your most magical one yet!</p>
+                        <p class="joke">"Happy 20th Birthday, Grandma! 👵 Welcome to the 'almost a quarter-century'
+                            club!"</p>
+                        <p class="joke">"Officially retired from being a teenager. Enjoy the back pain! 😂"</p>
+                        <div class="signature">Warmly, ✨</div>
+                        <button id="confettiBtn" class="magic-btn">Spread Magic! ✨</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <canvas id="confettiCanvas"></canvas>
+    <script src="script.js"></script>
+</body>
+
+</html>

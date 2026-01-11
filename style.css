@@ -1,0 +1,317 @@
+:root {
+    --primary: #ff85a2;
+    --secondary: #ffb3c1;
+    --accent: #fbc2eb;
+    --bg-light: #fdfcfb;
+    --glass: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #4a4a4a;
+}
+
+/* Background Animation */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    overflow: hidden;
+}
+
+.floating-item {
+    position: absolute;
+    font-size: 25px;
+    top: 100%;
+    animation: floating-items linear infinite;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+@keyframes floating-items {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#stars,
+#stars2,
+#stars3 {
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 1744px 122px #FFF, 134px 1321px #FFF, 92px 859px #FFF;
+    /* Placeholder for JS injection or box-shadow animation */
+    animation: animStar 50s linear infinite;
+}
+
+#stars {
+    width: 1px;
+    height: 1px;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    animation: animStar 100s linear infinite;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+/* Container */
+.container {
+    perspective: 1500px;
+    z-index: 10;
+}
+
+/* The Card Wrapper and Card */
+.card-wrapper {
+    width: 400px;
+    height: 500px;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-wrapper.expanded {
+    width: 600px;
+}
+
+@media (max-width: 500px) {
+    .card-wrapper.expanded {
+        width: 90vw;
+    }
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card.open {
+    transform: rotateY(-130deg);
+}
+
+.card-front,
+.card-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(255, 133, 162, 0.2);
+    backdrop-filter: blur(15px);
+    background: var(--glass);
+}
+
+.card-front {
+    z-index: 2;
+}
+
+.card-inside {
+    transform: rotateY(180deg);
+    background: rgba(255, 255, 255, 0.6);
+    justify-content: space-around;
+}
+
+/* Front Styling */
+.card-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.name {
+    display: block;
+    font-family: 'Dancing Script', cursive;
+    color: var(--accent);
+    font-size: 3.5rem;
+    text-shadow: 0 0 15px rgba(255, 230, 109, 0.5);
+    margin-top: 10px;
+}
+
+.tap-hint {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: pulse 1.5s infinite;
+}
+
+/* Inside Styling */
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+.wish-content p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin: 20px 0;
+}
+
+.joke {
+    font-style: italic;
+    font-size: 0.95rem !important;
+    opacity: 0.8;
+    margin-top: -10px !important;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+/* Magic Button */
+.magic-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.magic-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+}
+
+/* Confetti Canvas */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Music Control */
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.music-control.playing .music-icon {
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animations */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
