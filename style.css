@@ -1,16 +1,16 @@
 :root {
-    --primary: #7a9680;
-    /* Loid/WISE Green */
-    --secondary: #fab3ad;
-    /* Anya Pink */
-    --accent: #610a10;
-    /* Yor Dark Red */
-    --gold: #ffd700;
-    /* Stella Star Gold */
-    --dark: #2c2827;
-    /* Deep Espionage Grey */
-    --glass: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(44, 40, 39, 0.2);
+    --primary: #9d0208;
+    /* Deep Rose for Text Contrast */
+    --secondary: #ff8fa3;
+    /* Soft Pink Accent */
+    --accent: #ff4d6d;
+    /* Bright Pink */
+    --gold: #ffb703;
+    /* Warm Gold */
+    --dark: #fff0f3;
+    /* Very Light Pink Background */
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(255, 182, 193, 0.5);
 }
 
 * {
@@ -29,13 +29,14 @@ h2,
 
 body {
     background: var(--dark);
-    background: radial-gradient(circle at center, #3d4a41 0%, #1a1d1b 100%);
+    background: radial-gradient(circle at center, #fff0f3 0%, #ffccd5 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    color: #4a4a4a;
+    color: #590d22;
+    /* Darker text for contrast */
 }
 
 /* Background Animation */
@@ -46,16 +47,17 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: radial-gradient(circle at 50% 50%, #2c3e34 0%, #0d0f0e 100%);
+    background: radial-gradient(circle at 50% 50%, #fff0f3 0%, #ffb3c1 100%);
     overflow: hidden;
 }
 
 /* Twinkling Stars */
 .star {
     position: absolute;
-    background: white;
+    background: #ff4d6d;
+    /* Pink/Red stars for visibility on light bg */
     border-radius: 50%;
-    opacity: 0.5;
+    opacity: 0.6;
     animation: twinkle var(--duration) infinite ease-in-out;
 }
 
@@ -108,9 +110,10 @@ body {
 #stars3 {
     border-radius: 50%;
     background: transparent;
-    box-shadow: 1744px 122px #FFF, 134px 1321px #FFF, 92px 859px #FFF;
+    box-shadow: 1744px 122px #ff8fa3, 134px 1321px #ff8fa3, 92px 859px #ff8fa3;
     /* Placeholder for JS injection or box-shadow animation */
     animation: animStar 50s linear infinite;
+    opacity: 0.5;
 }
 
 #stars {
@@ -187,9 +190,9 @@ body {
     height: 200%;
     background: linear-gradient(45deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.1) 45%,
-            rgba(255, 255, 255, 0.5) 50%,
-            rgba(255, 255, 255, 0.1) 55%,
+            rgba(255, 215, 0, 0.1) 45%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 215, 0, 0.1) 55%,
             transparent 100%);
     transform: rotate(-45deg);
     animation: glitter 6s infinite linear;
