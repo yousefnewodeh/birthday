@@ -136,13 +136,13 @@ body {
 }
 
 .card-wrapper.expanded {
-    width: 600px;
-    max-width: 95vw;
+    width: 400px;
+    max-width: 90vw;
 }
 
 @media (max-width: 650px) {
     .card.open {
-        transform: translateX(45%) rotateY(-165deg) scale(0.9);
+        transform: rotateY(-180deg) scale(0.9);
     }
 
     .card-front,
@@ -169,7 +169,7 @@ body {
 
 @media (max-width: 400px) {
     .card.open {
-        transform: translateX(48%) rotateY(-170deg) scale(0.8);
+        transform: rotateY(-180deg) scale(0.8);
     }
 
     .name {
@@ -183,11 +183,10 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: left;
 }
 
 .card.open {
-    transform: translateX(50%) rotateY(-160deg);
+    transform: rotateY(-180deg);
 }
 
 .card-front,
@@ -219,8 +218,6 @@ body {
     transform: rotateY(180deg);
     background: rgba(255, 255, 255, 0.8);
     justify-content: space-around;
-    /* Shadow at the hinge */
-    box-shadow: inset 15px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Front Styling */
