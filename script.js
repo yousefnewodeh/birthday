@@ -49,12 +49,43 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    // 3D Tilt Effect
+    const wrapper = document.querySelector('.card-wrapper');
+
+    wrapper.addEventListener('mousemove', (e) => {
+        if (card.classList.contains('open')) {
+            wrapper.style.transform = 'none';
+            return;
+        }
+
+        const rect = wrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg
+        const rotateY = ((x - centerX) / centerX) * 15; // Max 15 deg
+
+        wrapper.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+        wrapper.style.transform = 'perspective(2000px) rotateX(0) rotateY(0)';
+    });
+
     // Toggle Card
     card.addEventListener('click', (e) => {
         // Don't flip if clicking the button
         if (e.target !== confettiBtn) {
             card.classList.toggle('open');
             card.parentElement.classList.toggle('expanded');
+
+            // Reset tilt when opening
+            if (card.classList.contains('open')) {
+                wrapper.style.transform = 'none';
+            }
 
             // Start music on first interaction if not playing
             if (!isMusicPlaying) {
